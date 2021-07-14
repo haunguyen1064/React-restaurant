@@ -24,7 +24,7 @@ function App() {
         <Meals />
       </main>
       <footer>
-        Develop by Hau Nguyen &copy; 2021
+        Developed by Hau Nguyen &copy; 2021
       </footer>
     </CartProvider>
   );
