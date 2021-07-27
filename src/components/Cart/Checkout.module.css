@@ -3,6 +3,9 @@
   height: 19rem;
   /* overflow: auto; */
 }
+.form p {
+  font-size: 0.75em;
+}
 
 .control {
   margin-bottom: 0.5rem;
