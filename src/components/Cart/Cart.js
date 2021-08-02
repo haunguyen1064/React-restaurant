@@ -7,6 +7,8 @@ import classes from './Cart.module.css';
 import CartContext from '../../store/cart-context';
 import Checkout from './Checkout';
 
+
+
 const Cart = (props) => {
   const [isCheckout, setIsCheckout] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -16,6 +18,9 @@ const Cart = (props) => {
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
   const [OrderId,setOrderId] = useState("");
+  const randomNumber = Math.floor(1000+ Math.random()*8999);
+
+
 
   const cartItemRemoveHandler = (id) => {
     cartCtx.removeItem(id);
@@ -31,22 +36,22 @@ const Cart = (props) => {
 
   const submitOrderHandler = async (userData) => {
     setIsSubmitting(true);
-    const response = await fetch('https://react-post-request-8c25d-default-rtdb.asia-southeast1.firebasedatabase.app/oder.json', {
+    const response = await fetch('https://react-post-request-8c25d-default-rtdb.asia-southeast1.firebasedatabase.app/order.json', {
       method: 'POST',
       body: JSON.stringify({
         user: userData,
         orderedItems: cartCtx.items,
-        totalAmount: cartCtx.totalAmount
+        totalAmount: cartCtx.totalAmount,
+        orderId: randomNumber
       }),
     });
     if (!response.ok) {
       throw new Error('Something went wrong!');
     }
 
-    const data = await response.json();
-    setOrderId(data.name);
+    setOrderId(randomNumber)
 
-    props.OrderID(data.name)
+    props.OrderID(randomNumber)
     
 
     setIsSubmitting(false);
@@ -101,7 +106,7 @@ const Cart = (props) => {
   const didSubmitModalContent = (
     <React.Fragment>
       <p>Successfully sent the order! <br></br>
-      Your order code <Link to="/order" onClick={props.onClose}> {OrderId}</Link></p>
+      Your order number <Link to="/order" onClick={props.onClose}> {OrderId}</Link></p>
       <div className={classes.actions}>
       <button className={classes.button} onClick={props.onClose}>
         Close

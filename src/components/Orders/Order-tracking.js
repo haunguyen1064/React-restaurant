@@ -28,7 +28,7 @@ const OrderTracking = (props) => {
             throw new Error();
           }
           const response = await fetch(
-            `https://react-post-request-8c25d-default-rtdb.asia-southeast1.firebasedatabase.app/oder/${props.id}.json`
+            `https://react-post-request-8c25d-default-rtdb.asia-southeast1.firebasedatabase.app/order.json`
           );
 
           if (!response.ok) {
@@ -36,17 +36,32 @@ const OrderTracking = (props) => {
           }
           const responseData = await response.json();
 
+
           if (responseData.error) {
             throw new Error()
           }
-          
+
+          let storedId= [];
+
+          for (const key in responseData) {
+            storedId.push({
+              orderNumber: responseData[key].orderId,
+              serverId: key
+              });
+          }
+
+          const IndexofSearch = storedId.findIndex((item)=>{
+            return item.orderNumber === +props.id;
+          });
+
+          const searchResult = storedId[IndexofSearch].serverId;
         setInfor((prev)=>{
               return {
-            items: [...responseData.orderedItems],
-            customer: {...responseData.user},
-            totalAmount: responseData.totalAmount,
+            items: [...responseData[searchResult].orderedItems],
+            customer: {...responseData[searchResult].user},
+            totalAmount: responseData[searchResult].totalAmount,
             renderOrderID: props.id
-            }});
+        }});
             setIsLoading(false);
             setHttpError(false);
         }
@@ -65,7 +80,7 @@ const OrderTracking = (props) => {
         return (() => {
           clearTimeout(timer);
         })
-    },[props.id,])
+    },[props.id])
       if (isLoading) {
         return (
           <section className={classes.orderLoading}>

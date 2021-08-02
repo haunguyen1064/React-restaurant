@@ -5,7 +5,7 @@ const Errorpage = () => {
     return (
         <>
     <h1>404 Error</h1>
-    <h4>Can't find your Order, please check again your Order Code!</h4>
+    <h4>Can't find your Order, please check again your Order Number!</h4>
     </>
     )
 }

@@ -9,3 +9,8 @@
 p {
     font-size: 1em;
 }
+code {
+    font-size: 1.3em;
+    font-weight: lighter;
+    font-style: italic;
+}
