@@ -1,0 +1,11 @@
+.status {
+    color: green;
+}
+.container {
+    border-bottom: 2px dotted #8a2b06;
+    padding-bottom: 20px;
+    border-bottom-width: 50%;
+}
+p {
+    font-size: 1em;
+}

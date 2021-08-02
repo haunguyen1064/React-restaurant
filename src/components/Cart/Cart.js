@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom'
 
 import Modal from '../UI/Modal';
 import CartItem from './CartItem';
@@ -14,6 +15,7 @@ const Cart = (props) => {
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
+  const [OrderId,setOrderId] = useState("");
 
   const cartItemRemoveHandler = (id) => {
     cartCtx.removeItem(id);
@@ -29,13 +31,24 @@ const Cart = (props) => {
 
   const submitOrderHandler = async (userData) => {
     setIsSubmitting(true);
-    await fetch('https://react-post-request-8c25d-default-rtdb.asia-southeast1.firebasedatabase.app/oder.json', {
+    const response = await fetch('https://react-post-request-8c25d-default-rtdb.asia-southeast1.firebasedatabase.app/oder.json', {
       method: 'POST',
       body: JSON.stringify({
         user: userData,
         orderedItems: cartCtx.items,
+        totalAmount: cartCtx.totalAmount
       }),
     });
+    if (!response.ok) {
+      throw new Error('Something went wrong!');
+    }
+
+    const data = await response.json();
+    setOrderId(data.name);
+
+    props.OrderID(data.name)
+    
+
     setIsSubmitting(false);
     setDidSubmit(true);
     cartCtx.clearCart();
@@ -88,7 +101,7 @@ const Cart = (props) => {
   const didSubmitModalContent = (
     <React.Fragment>
       <p>Successfully sent the order! <br></br>
-      Check your order  <a href= "https://react-post-request-8c25d-default-rtdb.asia-southeast1.firebasedatabase.app/oder.json" rel="noreferrer" target="_blank">here</a> (in development)</p>
+      Your order code <Link to="/order" onClick={props.onClose}> {OrderId}</Link></p>
       <div className={classes.actions}>
       <button className={classes.button} onClick={props.onClose}>
         Close

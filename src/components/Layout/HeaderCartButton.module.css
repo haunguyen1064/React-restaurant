@@ -24,7 +24,7 @@
 }
 
 .badge {
-  background-color: #b94517;
+  background-color: #5c4035;
   padding: 0.25rem 1rem;
   border-radius: 25px;
   margin-left: 1rem;
@@ -57,7 +57,7 @@
     transform: scale(1);
   }
 }
-@media (max-width:680px) {
+@media (max-width:999px) {
   .button {
     padding: 0.3rem 1.5rem;
     width: 27%;

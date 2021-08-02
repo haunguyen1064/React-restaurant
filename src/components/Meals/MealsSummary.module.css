@@ -20,5 +20,8 @@
   .summary h2 {
     font-size: 1.7em;
   }
+  .summary p {
+    font-size: 0.85em;
+  }
 }
 

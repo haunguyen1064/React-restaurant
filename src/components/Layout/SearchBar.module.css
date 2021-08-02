@@ -1,0 +1,46 @@
+.form {
+    width: 35%;
+}
+.form input {
+    padding: 0.45em;
+    width: 80%;
+    border-top-left-radius: 0.3em;
+    border-bottom-left-radius: 0.3em;
+    margin-right: 0;
+    border: none;
+    height: 30px;
+
+}
+
+.form input:focus {
+    outline: none;
+}
+
+.form button {
+    cursor: pointer;
+    margin: 0;
+    position: relative;
+    left: -1px;
+    bottom: -6px;
+    padding-top: 0.3em;
+    padding-bottom: 0;
+    background-color: #4d1601;
+    height: 30px;
+    border-radius: 0 2px 2px 0;
+    color: white;
+    width: 15%;
+    border:none;
+}
+
+@media (max-width: 999px) {
+
+    .form {
+        width: 100%;
+        order: 6;
+        margin-bottom: 0px;
+        margin-top: -15px;
+    }
+    .form button {
+        width: 20%;
+    }
+}

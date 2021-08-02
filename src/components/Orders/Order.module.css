@@ -1,0 +1,99 @@
+h1 {
+    text-align: center;
+}
+h4 {
+  color: #8a2b06;
+  text-align: center;
+}
+p {
+    margin: 0.5em 0 0;
+    font-size: 1.1em;
+}
+
+.order-item li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #8a2b06;
+    padding: 0.5rem 0;
+  }
+
+
+
+
+.order {
+    max-width: 60rem;
+    width: 90%;
+    max-width: 550px;
+    margin: 2rem auto;
+  }
+
+.fade {
+  animation: order-appear 1s ease-out forwards;
+}
+
+  .summary {
+    width: 10rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .price {
+    color: #8a2b06;
+  }
+  
+  .amount {
+    border: 1px solid #ccc;
+    padding: 0.1rem 0.6rem;
+    border-radius: 6px;
+    color: #363636;
+    font-size: 0.85em;
+  }
+  
+.order code {
+    font-size: 1.2em;
+    font-weight: normal;
+    font-style: italic;
+}
+.order li {
+    list-style: none;
+    padding: 0;
+}
+
+.totalAmount {
+    display: flex;
+    justify-content: space-between;
+}
+
+.total {
+    font-weight: bold;
+    margin: .7em 0;
+}
+.itemName {
+    font-weight: bold;
+    font-size: 1em;
+}
+.orderError {
+  text-align: center;
+  color: red;
+  width: 90%;
+  margin: 0 auto;
+}
+.orderLoading {
+  text-align: center;
+  color: white;
+}
+@keyframes order-appear {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  to {
+    visibility:visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
