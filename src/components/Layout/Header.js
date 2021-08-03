@@ -15,7 +15,7 @@ const Header = (props) => {
   return (
     <Fragment>
       <header className={classes.header}>
-        <Link to="/"><h1>ReactRestaurant</h1></Link>
+        <Link to="/"><h1>React Restaurant</h1></Link>
         <SearchBar inputOrderId={getInputOrderID}/>
         <HeaderCartButton onClick={props.onShowCart} />
       </header>

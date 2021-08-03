@@ -5,7 +5,7 @@ const Customer = (props) => {
   return (
     <Fragment>
       <div className={classes.container}>
-      <h3>Your order number:  <code>{props.customerInfo.renderOrderID}</code></h3>
+      <h3>Order Code:  <code>{props.customerInfo.renderOrderID}</code></h3>
         <p>Name: {props.customerInfo.customer.name}</p>
         <p>
           Address: {props.customerInfo.customer.street},{" "}
